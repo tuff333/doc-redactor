@@ -1,0 +1,4 @@
+Easy to debug
+You can run:
+
+python -m training_pipeline.dataset_builder
