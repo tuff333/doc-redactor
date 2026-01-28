@@ -1,0 +1,20 @@
+# API
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+requests
+
+# PDF + OCR
+pymupdf
+pillow
+pytesseract
+
+# AI / Embeddings / RAG
+chromadb
+langchain
+sentence-transformers
+
+# Smart redaction model
+spacy
+tqdm

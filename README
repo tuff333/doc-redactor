@@ -1,0 +1,33 @@
+## 🔮 Future Work
+
+The Doc‑Redactor backend is fully functional and modular.  
+The following enhancements are planned for future releases:
+
+### 🔧 Accuracy Improvements
+- Table‑aware span detection  
+- Regex‑based field extraction  
+- Multi‑line field grouping  
+- Numeric pattern detection  
+- Chemical name detection  
+- Expanded training dataset (50–100+ examples)
+
+### 📊 Evaluation Tools
+- Precision/Recall/F1 per document  
+- Confusion matrix  
+- Error analysis reports  
+
+### ⚡ Performance Enhancements
+- GPU‑accelerated training  
+- Optimized spaCy configuration  
+
+### 📝 Logging & Analytics
+- `training_logs/` directory  
+- Timestamped logs  
+- Metrics per epoch  
+
+### 🗂️ Model Versioning
+- Automatic version folders (`model_v1/`, `model_v2/`, etc.)  
+- Timestamp‑based versioning  
+- Easy rollback  
+
+These improvements will be implemented iteratively as the project evolves.

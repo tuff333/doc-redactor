@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document Redaction System</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header>
+    Document Redaction System
+    <!-- === HISTORY PANEL INTEGRATION === -->
+    <button id="toggleHistoryBtn">History</button>
+  </header>
+
+  <!-- ============================================================
+       PHASE 2 — DRAG & DROP UPLOAD (FULL‑SCREEN OVERLAY)
+       ============================================================ -->
+  <div id="dropOverlay" class="drop-overlay">
+    <div class="drop-overlay-text">Drop your file to upload</div>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================================================
+         LEFT SIDEBAR
+         ============================================================ -->
+    <div class="sidebar">
+
+      <h2>Upload Document</h2>
+
+      <!-- === PHASE 2 — DRAG & DROP UPLOAD (SIDEBAR DROP ZONE) === -->
+      <div id="dropZone" class="drop-zone">
+        <p>Drop PDF here or click below</p>
+      </div>
+
+      <input type="file" id="fileInput" />
+      <button id="uploadBtn">Upload</button>
+      <p id="uploadStatus"></p>
+
+      <h2>Chat with Document</h2>
+      <textarea id="questionInput" rows="2" placeholder="Ask a question"></textarea>
+      <button id="askBtn">Ask</button>
+      <div id="answerOutput" class="chat-history"></div>
+
+      <h2>Redact Text</h2>
+      <input type="text" id="redactTextInput" placeholder="Text to redact" />
+      <button id="redactTextBtn">Redact Text</button>
+      <p id="redactTextStatus"></p>
+
+      <h2>Smart Suggestions</h2>
+      <div id="suggestionsContainer"></div>
+      <button id="applySuggestionsBtn">Redact Selected</button>
+      <p id="suggestionStatus"></p>
+
+      <h2>Tags</h2>
+      <div id="tagsDisplay"></div>
+      <input type="text" id="manualTagsInput" placeholder="Manual tags (comma separated)" />
+      <button id="saveTagsBtn">Save Manual Tags</button>
+
+      <h2>Output Options</h2>
+      <input type="text" id="outputFileInput" placeholder="Output filename" />
+      <label>
+        <input type="checkbox" id="saveToOutputCheckbox" checked />
+        Save to /output folder
+      </label>
+      <button id="outputInfoBtn">Confirm Output</button>
+      <p id="outputInfoStatus"></p>
+    </div>
+
+    <!-- ============================================================
+         PDF VIEWER
+         ============================================================ -->
+    <div class="viewer">
+      <h2>Document Viewer</h2>
+
+      <div class="page-controls">
+        <button id="prevPageBtn">Previous Page</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPageBtn">Next Page</button>
+      </div>
+
+      <canvas id="pdfCanvas"></canvas>
+      <p>Tip: Drag a rectangle on the page to redact that area.</p>
+      <p id="areaRedactStatus"></p>
+    </div>
+
+    <!-- ============================================================
+         RIGHT-SIDE HISTORY PANEL
+         ============================================================ -->
+    <div class="history-panel" id="historyPanel">
+
+      <div class="history-tabs">
+        <button class="history-tab active" data-tab="versions">Versions</button>
+        <button class="history-tab" data-tab="audit">Audit Log</button>
+      </div>
+
+      <div class="history-content">
+
+        <div id="historyVersions" class="history-section active">
+          <ul id="versionList"></ul>
+          <button id="undoBtn" class="history-undo-btn">Undo Last</button>
+        </div>
+
+        <div id="historyAudit" class="history-section">
+          <ul id="auditList"></ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- === PHASE 2 — TOAST NOTIFICATIONS === -->
+  <div id="toastContainer" class="toast-container"></div>
+  
+  <!-- === PHASE 2 — GLOBAL LOADING OVERLAY WITH SIGNATURE === -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+
+      <!-- Spinner -->
+      <div class="spinner"></div>
+
+      <!-- Loading text -->
+      <div class="loading-text">⏳ Wait Rasesh, Processing…</div>
+
+      <!-- Signature Animation (NO external SVG file needed) -->
+      <div class="signature-container">
+        <svg class="signature-svg" viewBox="0 0 300 80">
+          <defs>
+            <!-- Glow for particle trail -->
+            <filter id="particleGlow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Main signature stroke -->
+          <path class="signature-path"
+            d="M10 40 
+              Q 40 10, 70 40 
+              T 130 40 
+              Q 160 10, 190 40 
+              T 260 40" />
+
+          <!-- Particle trail stroke -->
+          <path class="signature-particles"
+            d="M10 40 
+              Q 40 10, 70 40 
+              T 130 40 
+              Q 160 10, 190 40 
+              T 260 40" />
+        </svg>
+
+        <div class="signature-name">Rasesh</div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Core utilities -->
+<script src="js/loading.js"></script>
+<script src="js/toast.js"></script>
+
+<!-- Modules that define functions used by app.js -->
+<script src="js/chat.js"></script>
+<script src="js/output.js"></script>   <!-- ⭐ MOVE HERE -->
+
+<!-- MUST LOAD AFTER chat.js and output.js -->
+<script src="js/app.js"></script>
+
+<!-- Other modules -->
+<script src="js/upload.js"></script>
+<script src="js/pdf-viewer.js"></script>
+<script src="js/redact-text.js"></script>
+<script src="js/redact-suggestions.js"></script>
+<script src="js/redact-area.js"></script>
+<script src="js/tags.js"></script>
+<script src="js/history.js"></script>
+<script src="js/dragdrop.js"></script>
+
+
+
+</body>
+</html>
