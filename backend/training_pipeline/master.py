@@ -1,11 +1,13 @@
 # ============================================================
-# MASTER TRAINING ORCHESTRATOR
+# MASTER TRAINING ORCHESTRATOR (Unified spaCy Pipeline)
 # ============================================================
 
 import os
+from pathlib import Path
 
-from training_pipeline.dataset_builder import build_training_dataset
-from training_pipeline.model_trainer import train_spacy_model
+# Import from the local spacy_pipeline package
+from .dataset_builder import build_training_dataset
+from .model_trainer import train_spacy_model
 
 
 def main():
@@ -14,23 +16,26 @@ def main():
     print("======================================\n")
 
     # ------------------------------------------------------------
-    # DEFINE PATHS
+    # PATH SETUP (relative to ...\Ai)
     # ------------------------------------------------------------
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = Path(__file__).resolve().parents[2]   # ...\Ai
+    TRAINING_DATA = BASE_DIR / "training_data"
+    TRAINED_MODEL = BASE_DIR / "trained_model" / "spacy"
 
-    ORIGINAL_DIR = os.path.join(BASE_DIR, "training_data", "original")
-    REDACTED_DIR = os.path.join(BASE_DIR, "training_data", "redacted")
-    MODEL_DIR = os.path.join(BASE_DIR, "app", "redaction_model")
+    ORIGINAL_DIR = TRAINING_DATA / "original"
+    REDACTED_DIR = TRAINING_DATA / "redacted"
+
+    TRAINED_MODEL.mkdir(parents=True, exist_ok=True)
 
     print(f"[INFO] Original PDFs: {ORIGINAL_DIR}")
     print(f"[INFO] Redacted PDFs: {REDACTED_DIR}")
-    print(f"[INFO] Model output:  {MODEL_DIR}\n")
+    print(f"[INFO] Model output:  {TRAINED_MODEL}\n")
 
     # ------------------------------------------------------------
     # BUILD TRAINING DATASET
     # ------------------------------------------------------------
     print("[INFO] Building training dataset...")
-    training_data = build_training_dataset(ORIGINAL_DIR, REDACTED_DIR)
+    training_data = build_training_dataset(str(ORIGINAL_DIR), str(REDACTED_DIR))
 
     if not training_data:
         print("[ERROR] No training examples found. Check your PDF pairs.")
@@ -41,11 +46,13 @@ def main():
     # ------------------------------------------------------------
     # TRAIN MODEL
     # ------------------------------------------------------------
-    train_spacy_model(training_data, MODEL_DIR)
+    train_spacy_model(training_data, str(TRAINED_MODEL))
+
+    print("\n✔ spaCy training complete.")
+    print(f"✔ Model saved to: {TRAINED_MODEL}")
 
 
 # ------------------------------------------------------------
 # SCRIPT ENTRY POINT
 # ------------------------------------------------------------
-if __name__ == "__main__":
-    main()
+if __
