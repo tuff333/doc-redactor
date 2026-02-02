@@ -1,0 +1,299 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\projects\doc-redactor>  tree doc-redactor /F
+Folder PATH listing for volume OS
+Volume serial number is AEBD-8384
+C:\PROJECTS\DOC-REDACTOR\DOC-REDACTOR
+Invalid path - \PROJECTS\DOC-REDACTOR\DOC-REDACTOR
+No subfolders exist
+
+PS C:\projects\doc-redactor> cd..
+PS C:\projects>  tree doc-redactor /F
+Folder PATH listing for volume OS
+Volume serial number is AEBD-8384
+C:\PROJECTS\DOC-REDACTOR
+│   path.py
+│   README
+│   roadmap.md
+│   run all in line.txt
+│   run.cmd
+│   run.py
+│   test_v1.cmd
+│   tree backend.txt
+│   tree frontend.txt
+│
+├───backend
+│   │   backend _test.cmd
+│   │   comands test.txt
+│   │   Dokerfile
+│   │   install_dependencies.cmd
+│   │   new_train_redaction_model.py
+│   │   requirements.txt
+│   │   run_backend_server.cmd
+│   │   training_run.cmd
+│   │   __init__.py
+│   │
+│   ├───app
+│   │   │   main.py
+│   │   │   main_backup.py
+│   │   │   run_backend.cmd
+│   │   │   __init__.py
+│   │   │
+│   │   ├───chroma_db
+│   │   │   │   chroma.sqlite3
+│   │   │   │
+│   │   │   └───4a233612-efdf-4a9c-8b39-77be75739a43
+│   │   │           data_level0.bin
+│   │   │           header.bin
+│   │   │           length.bin
+│   │   │           link_lists.bin
+│   │   │
+│   │   ├───redaction_model
+│   │   │   │   config.cfg
+│   │   │   │   training.spacy
+│   │   │   │
+│   │   │   ├───model-best
+│   │   │   │   │   config.cfg
+│   │   │   │   │   meta.json
+│   │   │   │   │   tokenizer
+│   │   │   │   │
+│   │   │   │   ├───ner
+│   │   │   │   │       cfg
+│   │   │   │   │       model
+│   │   │   │   │       moves
+│   │   │   │   │
+│   │   │   │   └───vocab
+│   │   │   │           key2row
+│   │   │   │           lookups.bin
+│   │   │   │           strings.json
+│   │   │   │           vectors
+│   │   │   │           vectors.cfg
+│   │   │   │
+│   │   │   ├───model-last
+│   │   │   │   │   config.cfg
+│   │   │   │   │   meta.json
+│   │   │   │   │   tokenizer
+│   │   │   │   │
+│   │   │   │   ├───ner
+│   │   │   │   │       cfg
+│   │   │   │   │       model
+│   │   │   │   │       moves
+│   │   │   │   │
+│   │   │   │   └───vocab
+│   │   │   │           key2row
+│   │   │   │           lookups.bin
+│   │   │   │           strings.json
+│   │   │   │           vectors
+│   │   │   │           vectors.cfg
+│   │   │   │
+│   │   │   └───training
+│   │   │           train.spacy
+│   │   │
+│   │   ├───routes
+│   │   │   │   archive_routes.py
+│   │   │   │   chat.py
+│   │   │   │   download.py
+│   │   │   │   history.py
+│   │   │   │   redact_auto.py
+│   │   │   │   redact_box.py
+│   │   │   │   redact_multiple.py
+│   │   │   │   redact_suggest.py
+│   │   │   │   redact_text.py
+│   │   │   │   save.py
+│   │   │   │   suggest.py
+│   │   │   │   tags.py
+│   │   │   │   upload.py
+│   │   │   │   view.py
+│   │   │   │   __init__.py
+│   │   │   │
+│   │   │   └───__pycache__
+│   │   │           archive_routes.cpython-311.pyc
+│   │   │           chat.cpython-311.pyc
+│   │   │           download.cpython-311.pyc
+│   │   │           history.cpython-311.pyc
+│   │   │           redact_auto.cpython-311.pyc
+│   │   │           redact_box.cpython-311.pyc
+│   │   │           redact_multiple.cpython-311.pyc
+│   │   │           redact_suggest.cpython-311.pyc
+│   │   │           redact_text.cpython-311.pyc
+│   │   │           save.cpython-311.pyc
+│   │   │           suggest.cpython-311.pyc
+│   │   │           tags.cpython-311.pyc
+│   │   │           upload.cpython-311.pyc
+│   │   │           view.cpython-311.pyc
+│   │   │           __init__.cpython-311.pyc
+│   │   │
+│   │   ├───services
+│   │   │   │   box_redaction_service.py
+│   │   │   │   chat_service.py
+│   │   │   │   multiple_redaction_service.py
+│   │   │   │   pdf_service.py
+│   │   │   │   pii_service.py
+│   │   │   │   redaction_service.py
+│   │   │   │   redaction_suggestion_service.py
+│   │   │   │   suggest_service.py
+│   │   │   │   tags_service.py
+│   │   │   │
+│   │   │   └───__pycache__
+│   │   │           box_redaction_service.cpython-311.pyc
+│   │   │           chat_service.cpython-311.pyc
+│   │   │           multiple_redaction_service.cpython-311.pyc
+│   │   │           pdf_service.cpython-311.pyc
+│   │   │           pii_service.cpython-311.pyc
+│   │   │           redaction_service.cpython-311.pyc
+│   │   │           redaction_suggestion_service.cpython-311.pyc
+│   │   │           suggest_service.cpython-311.pyc
+│   │   │           tags_service.cpython-311.pyc
+│   │   │
+│   │   ├───state
+│   │   │   │   memory.py
+│   │   │   │   memory_helpers.py
+│   │   │   │
+│   │   │   └───__pycache__
+│   │   │           memory.cpython-311.pyc
+│   │   │           memory_helpers.cpython-311.pyc
+│   │   │
+│   │   ├───storage
+│   │   │   │   storage.py
+│   │   │   │   __init__.py
+│   │   │   │
+│   │   │   └───__pycache__
+│   │   │           storage.cpython-311.pyc
+│   │   │           __init__.cpython-311.pyc
+│   │   │
+│   │   ├───utils
+│   │   │   │   common.py
+│   │   │   │   llm_utils.py
+│   │   │   │   pdf_utils.py
+│   │   │   │   rag_utils.py
+│   │   │   │
+│   │   │   ├───chroma_db
+│   │   │   └───__pycache__
+│   │   │           llm_utils.cpython-311.pyc
+│   │   │           pdf_utils.cpython-311.pyc
+│   │   │           rag_utils.cpython-311.pyc
+│   │   │
+│   │   └───__pycache__
+│   │           main.cpython-311.pyc
+│   │           pdf_utils.cpython-311.pyc
+│   │           rag_utils.cpython-311.pyc
+│   │           __init__.cpython-311.pyc
+│   │
+│   ├───training_data
+│   │   ├───original
+│   │   │       25H20-PFR03 - CB006 Full terpenes - v2.pdf
+│   │   │       F25AB00106F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25CC00041F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25CC00064F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25CC00119F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25CC00140F-CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25CMK00070F - CoA-CoC Dried Cannabis  - V001 RELEASED.pdf
+│   │   │       F25CMK00070F - HC Pesticides (high_north_coa_00737633).pdf
+│   │   │       F25GEL00080F - CoA-CoC Dried Cannabis V0 - RELEASED.pdf
+│   │   │       F25GEL00080F - HC Pesticides (high_north_coa_00743140).pdf
+│   │   │       F25GP00098F - CoA-CoC Dried Cannabis V1 RELEASED.pdf
+│   │   │       F25ME00044F - CoA-CoC Dried Cannabis  Template - V001 RELEASED.pdf
+│   │   │       F25ME00044F - HC Pesticides (high_north_coa_00737629).pdf
+│   │   │       F25ME00100F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25OCM04126F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V1 RELEASED.pdf
+│   │   │       F25SPR00035F - CoA-CoC Dried Cannabis V0 RELEASED (2).pdf
+│   │   │       F25SPR00083F - CoA-CoC Dried Cannabis V0 RELEASED (2).pdf
+│   │   │       F25SPR00094F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED.pdf
+│   │   │       F25SUB00062F - CoA-CoC Dried Cannabis  V0 - RELEASED.pdf
+│   │   │       F25WR00055F - CoA-CoC Dried Cannabis  V0 - RELEASED.pdf
+│   │   │       F25WR00077F - CoA-CoC Dried Cannabis V0 - RELEASED.pdf
+│   │   │       F25WR00128F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 - RELEASED.pdf
+│   │   │       FTL-M-01_full_panel_COA.pdf
+│   │   │       FTL-M-01_full_panel_COA_redacted.pdf
+│   │   │       high_north_coa_00680989 (STM-INT-2409).pdf
+│   │   │       IMK_006_ML_CGF_(Pathogenia_221221_40316_PAR11251)_20221221_Chem_(2)_2023-12-06.pdf
+│   │   │       IMK_006_ML_CGF_(Pathogenia_230104_41637_PAR11505)20230104_Micros_(2)_2023-12-06.pdf
+│   │   │       RBP-0029 Cannabinoid & LOD High North May 2, 2025.pdf
+│   │   │       SRB-0034 Full Release PPB Anlytical August 25, 2025.pdf
+│   │   │       WIM-0028 Cannabinoid PPB Anlytical June 25, 2025.pdf
+│   │   │
+│   │   └───redacted
+│   │           25H20-PFR03 - CB006 Full terpenes - v2_Redacted.pdf
+│   │           AOG-B03_29.75%_amspec_240104_Redacted.pdf
+│   │           AOG-B03_29.75__amspec_240104_Redacted.pdf
+│   │           F25AB00106F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25CC00041F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25CC00064F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25CC00119F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25CC00140F-CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25CMK00070F - CoA-CoC Dried Cannabis  - V001 RELEASED_Redacted.pdf
+│   │           F25CMK00070F - HC Pesticides (high_north_coa_00737633)_Redacted.pdf
+│   │           F25GEL00080F - CoA-CoC Dried Cannabis V0 - RELEASED_Redacted.pdf
+│   │           F25GEL00080F - HC Pesticides (high_north_coa_00743140)_Redacted.pdf
+│   │           F25GP00098F - CoA-CoC Dried Cannabis V1 RELEASED_Redacted.pdf
+│   │           F25ME00044F - CoA-CoC Dried Cannabis  Template - V001 RELEASED_Redacted.pdf
+│   │           F25ME00044F - HC Pesticides (high_north_coa_00737629)_Redacted.pdf
+│   │           F25ME00100F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25OCM04126F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V1 RELEASED_Redacted.pdf
+│   │           F25SPR00035F - CoA-CoC Dried Cannabis V0 RELEASED (2)_Redacted.pdf
+│   │           F25SPR00083F - CoA-CoC Dried Cannabis V0 RELEASED (2)_Redacted.pdf
+│   │           F25SPR00094F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 RELEASED_Redacted.pdf
+│   │           F25SUB00062F - CoA-CoC Dried Cannabis  V0 - RELEASED_Redacted.pdf
+│   │           F25WR00055F - CoA-CoC Dried Cannabis  V0 - RELEASED_Redacted.pdf
+│   │           F25WR00077F - CoA-CoC Dried Cannabis V0 - RELEASED_Redacted.pdf
+│   │           F25WR00128F - PFG-PFF CoA-CoC Dried Cannabis (Canada) V0 - RELEASED_Redacted.pdf
+│   │           high_north_coa_00680989 (STM-INT-2409)_Redacted.pdf
+│   │           IMK_006_ML_CGF_(Pathogenia_221221_40316_PAR11251)_20221221_Chem_(2)_Redacted_2023-12-06.pdf
+│   │           IMK_006_ML_CGF_(Pathogenia_230104_41637_PAR11505)20230104_Micros_(2)_Redacted_2023-12-06.pdf
+│   │           RBP-0029 Cannabinoid & LOD High North May 2, 2025_Redacted.pdf
+│   │           SRB-0034 Full Release PPB Anlytical August 25, 2025_Redacted.pdf
+│   │           WIM-0028 Cannabinoid PPB Anlytical June 25, 2025_Redacted.pdf
+│   │
+│   ├───training_pipeline
+│   │   │   dataset_builder.py
+│   │   │   master.py
+│   │   │   model_trainer.py
+│   │   │   span_processing.py
+│   │   │   text_extraction.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           dataset_builder.cpython-311.pyc
+│   │           master.cpython-311.pyc
+│   │           model_trainer.cpython-311.pyc
+│   │           span_processing.cpython-311.pyc
+│   │           text_extraction.cpython-311.pyc
+│   │           __init__.cpython-311.pyc
+│   │
+│   └───__pycache__
+│           __init__.cpython-311.pyc
+│
+├───frontend
+│   │   index.html
+│   │   style.css
+│   │
+│   ├───js
+│   │       app.js
+│   │       chat.js
+│   │       dragdrop.js
+│   │       history.js
+│   │       loading.js
+│   │       output.js
+│   │       pdf-viewer.js
+│   │       redact-area.js
+│   │       redact-suggestions.js
+│   │       redact-text.js
+│   │       tags.js
+│   │       toast.js
+│   │       upload.js
+│   │
+│   └───libs
+│           pdf.js
+│           pdf.worker.js
+│
+├───storage
+│   ├───archives
+│   │   ├───months
+│   │   └───years
+│   ├───audit_logs
+│   └───documents
+└───__pycache__
+        path.cpython-311.pyc

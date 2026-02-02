@@ -1,0 +1,22 @@
+PS C:\projects\doc-redactor> tree frontend /F
+Folder PATH listing for volume OS
+Volume serial number is AEBD-8384
+C:\PROJECTS\DOC-REDACTOR\FRONTEND
+│   index.html
+│   old_index.html
+│   style.css
+│
+├───js
+│       app.js
+│       chat.js
+│       output.js
+│       pdf-viewer.js
+│       redact-area.js
+│       redact-suggestions.js
+│       redact-text.js
+│       tags.js
+│       upload.js
+│
+└───libs
+        pdf.js
+        pdf.worker.js
